@@ -43,7 +43,7 @@ users:
     lock_passwd: false
 chpasswd:
   list: |
-    ghost:password
+    ghost:666
   expire: false
 ssh_pwauth: true
 packages:
@@ -113,7 +113,7 @@ Wait ~1 minute for cloud-init to finish provisioning, grab the IP, and SSH insid
 # Get VM IP address
 virsh domifaddr vm
 
-# SSH access (Credentials: ubuntu / ubuntu)
+# SSH access (Credentials: ghost / 666)
 ssh -o PubkeyAuthentication=no ghost@192.168.122.25
 ```
 
