@@ -95,7 +95,7 @@ Deploy the VM in headless mode using the prepared disk and seed ISO.
 sudo virt-install \
   --name vm \
   --virt-type kvm \
-  --cpu host-model \
+  --cpu host-passthrough \
   --memory 8192 \
   --vcpus 4 \
   --import \
