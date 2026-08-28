@@ -80,13 +80,13 @@ sudo cloud-localds /var/lib/libvirt/images/seed.iso user-data meta-data
 Fetch the official Ubuntu cloud image, copy it to storage, and expand its capacity.
 ```bash
 # Download cloud image
-wget https://cloud-images.ubuntu.com/noble/20260307/noble-server-cloudimg-amd64.img
+wget https://cloud-images.ubuntu.com/noble/20260826/noble-server-cloudimg-amd64.img
 
 # Copy to storage pool
-sudo cp noble-server-cloudimg-amd64.img /var/lib/libvirt/images/test.qcow2
+sudo cp noble-server-cloudimg-amd64.img /var/lib/libvirt/images/vm.qcow2
 
 # Resize disk (+20GB)
-sudo qemu-img resize /var/lib/libvirt/images/test.qcow2 +20G
+sudo qemu-img resize /var/lib/libvirt/images/vm.qcow2 +20G
 ```
 
 ### 7. Provision and Launch VM
@@ -97,10 +97,10 @@ sudo virt-install \
   --virt-type kvm \
   --cpu host-passthrough \
   --memory 8192 \
-  --vcpus 4 \
+  --vcpus 4,sockets=1,cores=4,threads=1 \
   --import \
   --osinfo ubuntu24.04 \
-  --disk /var/lib/libvirt/images/test.qcow2,format=qcow2,bus=virtio \
+  --disk /var/lib/libvirt/images/vm.qcow2,format=qcow2,bus=virtio \
   --disk /var/lib/libvirt/images/seed.iso,device=cdrom,readonly=on \
   --network network=default,model=virtio \
   --graphics none \
