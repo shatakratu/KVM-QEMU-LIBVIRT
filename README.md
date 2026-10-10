@@ -15,8 +15,7 @@ sudo apt update && sudo apt install -y \
     virtinst \
     cloud-image-utils \
     ovmf \
-    dnsmasq-base \
-    netcat-openbsd
+    dnsmasq-base
 ```
 
 ### 2. Configure User Permissions
