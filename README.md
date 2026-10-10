@@ -32,7 +32,7 @@ Create a working directory and define initialization files for automatic OS conf
 mkdir -p ~/vm && cd ~/vm
 ```
 
-`user-data` (sets default user, password, and starts guest agent):
+`user-data` (sets default user and password):
 ```yaml
 #cloud-config
 hostname: vm
@@ -42,14 +42,10 @@ users:
     shell: /bin/bash
     lock_passwd: false
 chpasswd:
+  expire: false
   list: |
     ghost:666
-  expire: false
 ssh_pwauth: true
-packages:
-  - qemu-guest-agent
-runcmd:
-  - systemctl enable --now qemu-guest-agent
 ```
 
 `meta-data` (sets instance identity):
