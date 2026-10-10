@@ -112,12 +112,6 @@ virsh domifaddr vm
 ssh -o PubkeyAuthentication=no ghost@192.168.122.25
 ```
 
-### 9. Troubleshooting
-Inspect cloud-init logs inside the VM to debug provisioning issues.
-```bash
-sudo tail -f /var/log/cloud-init-output.log
-```
-
 ---
 
 ## Essential `virsh` Cheat Sheet
